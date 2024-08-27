@@ -20,5 +20,5 @@
     <input type="number" formControlName="roomNumber" />
   </div>
   <!-- Set button type as 'submit' to be the one used to submit the form -->
-  <button type="submit">Submit</button>
+  <button type="submit" [disabled]="reservationForm.invalid">Submit</button>
 </form>

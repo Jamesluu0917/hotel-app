@@ -1,6 +1,7 @@
 <h2>Reservation List</h2>
 
-<ul>
+<!-- Only displays if there's reservations, otherwise display message -->
+<ul *ngIf="reservations.length; else noReservation">
   <li *ngFor="let reservation of reservations">
     Guest: {{ reservation.guestName }} <br />
     Email: {{ reservation.guestEmail }} <br />
@@ -9,3 +10,8 @@
     Check-Out: {{ reservation.checkOutDate }} <br />
   </li>
 </ul>
+
+<!-- Displayed if no reservation exists -->
+<ng-template #noReservation>
+  <p>No reservation available.</p>
+</ng-template>

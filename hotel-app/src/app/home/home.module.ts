@@ -6,5 +6,7 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [HomeComponent],
   imports: [CommonModule, RouterModule],
+  // allows HomeComponent to be imported in other files
+  exports: [HomeComponent],
 })
 export class HomeModule {}

@@ -1,17 +1,50 @@
-<h2>Reservation List</h2>
+<app-home></app-home>
+
+<h3 class="mt-5 mb-3">Reservation List</h3>
+
+<table class="table table-striped">
+  <!-- table header -->
+  <thead>
+    <!-- table row -->
+    <tr>
+      <!-- table column fields -->
+      <th>Guest</th>
+      <th>Email</th>
+      <th>Room</th>
+      <th>Check-In</th>
+      <th>Check-Out</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <!-- table body -->
+  <tbody>
+    <tr *ngFor="let reservation of reservations">
+      <td>{{ reservation.guestName }}</td>
+      <td>{{ reservation.guestEmail }}</td>
+      <td>{{ reservation.roomNumber }}</td>
+      <td>{{ reservation.checkInDate }}</td>
+      <td>{{ reservation.checkOutDate }}</td>
+      <td>
+        <button
+          class="btn btn-sm btn-danger mx-1"
+          (click)="deleteReservation(reservation.id)"
+        >
+          Delete
+        </button>
+        <button
+          class="btn btn-sm btn-secondary mx-1"
+          [routerLink]="['/edit', reservation.id]"
+        >
+          Edit
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 <!-- Only displays if there's reservations, otherwise display message -->
-<ul *ngIf="reservations.length; else noReservation">
-  <li *ngFor="let reservation of reservations">
-    Guest: {{ reservation.guestName }} <br />
-    Email: {{ reservation.guestEmail }} <br />
-    Room: {{ reservation.roomNumber }} <br />
-    Check-In: {{ reservation.checkInDate }} <br />
-    Check-Out: {{ reservation.checkOutDate }} <br />
-    <button (click)="deleteReservation(reservation.id)">Delete</button>
-    <button [routerLink]="['/edit', reservation.id]">Edit</button>
-  </li>
-</ul>
+<ul *ngIf="reservations.length; else noReservation"></ul>
 
 <!-- Displayed if no reservation exists -->
 <ng-template #noReservation>

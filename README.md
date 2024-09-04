@@ -1,4 +1,4 @@
-# Hotel app
+# Hotel App
 
 To create a component in a specific module -> ng g c componentName --module=moduleName
 
